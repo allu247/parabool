@@ -1,0 +1,10 @@
+<launch>
+<!--  <node pkg="antenna_controller" name="tle_getter" type="tle_getter_node.py" output="screen"/> -->
+  <node pkg="antenna_controller" name="public_calculations" type="public_calculations_node.py" output="screen"/>
+  <node pkg="antenna_controller" name="communication" type="communication_node.py" output="screen"/>
+  <node pkg="antenna_controller" name="satellite_manager" type="satellite_manager_node.py" output="screen"/>
+  <node pkg="antenna_controller" name="kenwood_radio" type="kenwood_radio_node.py" output="screen"/>
+<!--  <node pkg="antenna_controller" name="utf_antenna_mover" type="utf_antenna_mover_node.py" output="screen"/> -->
+  <node pkg="antenna_controller" name="active_mq_writer" type="active_mq_writer_node.py" output="screen"/>
+  <node pkg="antenna_controller" name="active_mq_listener" type="active_mq_listener_node.py" output="screen"/>
+</launch>

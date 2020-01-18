@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: modbus_plc_siemens
+Version: 0.0.0
+Summary: The modbus_PLC_siemens package
+Home-page: http://wiki.ros.org/modbus/modbus_plc_siemens
+Author: Sven Bock <sb@generationrobots.com>, Wagdi Ben yaala <wb@generationrobots.com>
+Author-email: sb@generationrobots.com
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN

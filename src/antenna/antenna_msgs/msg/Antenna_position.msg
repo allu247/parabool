@@ -1,0 +1,2 @@
+float64 leg_angle
+float64 dish_angle

@@ -1,0 +1,6 @@
+bool should_stop_antenna
+float64 antenna_stop_azimuth
+float64 antenna_stop_elevation
+float64 avg_wind_speed
+float64 wind_direction
+int64 date_time

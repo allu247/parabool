@@ -1,0 +1,8 @@
+prefix=/home/test/Projects/parabol-controller/install
+
+Name: modbus_cognex_insight
+Description: Description of modbus_cognex_insight
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/test/Projects/parabol-controller/install/lib 
+Requires: 

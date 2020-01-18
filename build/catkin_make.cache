@@ -1,0 +1,2 @@
+antenna
+-DCATKIN_DEVEL_PREFIX=/home/test/Projects/parabol-controller/devel -DCMAKE_INSTALL_PREFIX=/home/test/Projects/parabol-controller/install -G Unix Makefiles

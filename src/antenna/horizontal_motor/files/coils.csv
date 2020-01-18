@@ -1,0 +1,67 @@
+0001h;Operation command;R/W;1: Run, 0: Stop (valid when A002 = 03)
+0002h;Rotation direction command;R/W;1: Reverse rotation, 0: Forward rotation (valid when A002 = 03)
+0003h;External trip (EXT);R/W;1: Trip
+0004h;Trip reset (RS);R/W;1: Reset
+0007h;Intelligent input terminal [1];R/W;1: ON, 0: OFF (*1)
+0008h;Intelligent input terminal [2];R/W;1: ON, 0: OFF (*1)
+0009h;Intelligent input terminal [3];R/W;1: ON, 0: OFF (*1)
+000Ah;Intelligent input terminal [4];R/W;1: ON, 0: OFF (*1)
+000Bh;Intelligent input terminal [5];R/W;1: ON, 0: OFF (*1)
+000Ch;Intelligent input terminal [6];R/W;1: ON, 0: OFF (*1)
+000Dh;Intelligent input terminal [7];R/W;1: ON, 0: OFF (*1)
+000Fh;Operation status;R;"1: Run, 0: Stop (interlocked to ""d003"")"
+0010h;Rotation direction;R;"1: Reverse rotation, 0: Forward rotation (interlocked to ""d003"")"
+0011h;Inverter ready;R;1: Ready, 0: Not ready
+0013h;RUN (running);R;1: Running, 0: Not Running
+0014h;FA1 (constant-speed reached);R;1: ON, 0: OFF
+0015h;FA2 (set frequency overreached);R;1: ON, 0: OFF
+0016h;OL (overload advance notice (1));R;1: ON, 0: OFF
+0017h;OD (output deviation for PID control);R;1: ON, 0: OFF
+0018h;AL (alarm signal);R;1: ON, 0: OFF
+0019h;FA3 (set frequency reached);R;1: ON, 0: OFF
+001Ah;OTQ (over-torque);R;1: ON, 0: OFF
+001Ch;UV (undervoltage);R;1: ON, 0: OFF
+001Dh;TRQ (torque limited);R;1: ON, 0: OFF
+001Eh;RNT (operation time over);R;1: ON, 0: OFF
+001Fh;ONT (plug-in time over);R;1: ON, 0: OFF
+0020h;THM (thermal alarm signal);R;1: ON, 0: OFF
+0026h;BRK (brake release);R;1: ON, 0: OFF
+0027h;BER (brake error);R;1: ON, 0: OFF
+0028h;ZS (0 Hz detection signal);R;1: ON, 0: OFF
+0029h;DSE (speed deviation maximum);R;1: ON, 0: OFF
+002Ah;POK (positioning completed);R;1: ON, 0: OFF
+002Bh;FA4 (set frequency overreached 2);R;1: ON, 0: OFF
+002Ch;FA5 (set frequency reached 2);R;1: ON, 0: OFF
+002Dh;OL2 (overload notice advance (2));R;1: ON, 0: OFF
+002Eh;Odc: Analog O disconnection detec- tion;–;1: ON, 0: OFF
+002Fh;OIDc: Analog OI disconnection detec- tion;–;1: ON, 0: OFF
+0032h;FBV (PID feedback comparison);R;1: ON, 0: OFF
+0033h;NDc (communication train disconnec- tion);R;1: ON, 0: OFF
+0034h;LOG1 (logical operation result 1);R;1: ON, 0: OFF
+0035h;LOG2 (logical operation result 2);R;1: ON, 0: OFF
+0036h;LOG3 (logical operation result 3);R;1: ON, 0: OFF
+003Ah;WAC (capacitor life warning);R;1: ON, 0: OFF
+003Bh;WAF (cooling-fan speed drop);R;1: ON, 0: OFF
+003Ch;FR (starting contact signal);R;1: ON, 0: OFF
+003Dh;OHF (heat sink overheat warning);R;1: ON, 0: OFF
+003Eh;LOC (low-current indication signal);R;1: ON, 0: OFF
+003Fh;M01 (general output 1);R;1: ON, 0: OFF
+0040h;M02 (general output 2);R;1: ON, 0: OFF
+0041h;M03 (general output 3);R;1: ON, 0: OFF
+0045h;IRDY (inverter ready);R;1: ON, 0: OFF
+0046h;FWR (forward rotation);R;1: ON, 0: OFF
+0047h;RVR (reverse rotation);R;1: ON, 0: OFF
+0048h;MJA (major failure);R;1: ON, 0: OFF
+0049h;Data writing in progress;R;1: Writing in progress, 0: Normal status
+004Ah;CRC error;R;1: Error detected, 0: No error (*2)
+004Bh;Overrun;R;1: Error detected, 0: No error (*2)
+004Ch;Framing error;R;1: Error detected, 0: No error (*2)
+004Dh;Parity error;R;1: Error detected, 0: No error (*2)
+004Eh;Sum check error;R;1: Error detected, 0: No error (*2)
+0050h;WCO (window comparator O);R;1: ON, 0: OFF
+0051h;WCOI (window comparator OI);R;1: ON, 0: OFF
+0053h;OPDc (option disconnection);R;1: ON, 0: OFF
+0054h;FREF (FQ command source);R;1: Operator, 0: Others
+0055h;REF (RUN command source);R;1: Operator, 0: Others
+0056h;SETM (2nd motor selected);R;1: 2nd motor selected, 0: 1st motor selected
+0058h;EDM (Gate suppress monitor);R;1: ON, 0: OFF

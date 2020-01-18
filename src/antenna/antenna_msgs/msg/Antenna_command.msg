@@ -1,0 +1,6 @@
+float64 leg_linear_velocity 
+float64 dish_linear_velocity
+float64 leg_angle
+float64 dish_angle
+float64 leg_linear_acceleration
+float64 dish_linear_acceleration

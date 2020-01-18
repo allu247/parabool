@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/test/Projects/parabol-controller/install/setup.sh

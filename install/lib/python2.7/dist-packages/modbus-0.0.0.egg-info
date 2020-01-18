@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: modbus
+Version: 0.0.0
+Summary: The modbus package
+Home-page: http://wiki.ros.org/modbus/modbus
+Author: Sven Bock <sb@generationrobots.com>, Wagdi Ben yaala <wb@generationrobots.com>
+Author-email: sb@generationrobots.com
+License: BSD
+Description: UNKNOWN
+Platform: UNKNOWN
