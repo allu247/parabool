@@ -19,19 +19,23 @@ class Listener:
     def callback_horizontal(self, payload):
         print("Horizontal command")
         self.commands_horizontal = json.loads(payload.data)
+        print(self.commands_horizontal)
 
 
     def update_current_pos_horizontal(self, payload):
         print("Horizontal position")
         self.update_current_pos_horizontal = float(payload.data)
+        print(self.update_current_pos_horizontal)
 
     def callback_vertical(self, payload):
-        print("Horizontal command")
+        print("Vertical command")
         self.commands_vertical = json.loads(payload.data)
+        print(self.commands_vertical)
 
     def update_current_pos_vertical(self, payload):
-        print("Horizontal position")
+        print("Vertical position")
         self.update_current_pos_vertical = float(payload.data)
+        print(self.update_current_pos_vertical)
 
 
     def listener(self):

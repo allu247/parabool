@@ -73,6 +73,7 @@ class ControllerService:
         vertical_publisher.publish(json.dumps(azimuth_initialization_command))
         horizontal_publisher.publish(json.dumps(elevation_initialization_command))
 
+
         time.sleep(1)
 
         self.mission_initialized = True

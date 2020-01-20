@@ -106,4 +106,6 @@ def manual_rotate():
     commands = request.json
 
     response = horizontal_rotate_service.append_to_command_queue(commands, True)
+    horizontal_publisher = rospy.Publisher('/horizontal_motor_commands', String, queue_size=10)
+    horizontal_publisher.publish(json.dumps(response))
     return json.dumps(response)
