@@ -6,6 +6,8 @@ import rospy
 
 import sys
 import inspect, os
+from pymodbus.client.sync import ModbusTcpClient as ModbusClient
+from pymodbus.client.sync import ModbusRtuFramer
 
 BASE_LOCATION = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
 
@@ -16,6 +18,7 @@ from std_msgs.msg import String
 
 
 from RegisterService import RegisterService
+from RegisterMapping import RegisterMapping
 from PID import PID
 
 rospy.init_node('horizontal_motor_controller')
@@ -195,6 +198,147 @@ class RotationService:
         rospy.Subscriber("horizontal_sensors1", String, self.update_current_pos)
         rospy.spin()
 
+    def rotate_horizontal_left(self):
+        # Service for getting commands and modbus for sending commands
+        register = RegisterMapping(3003, 1)
+        client = ModbusClient(host='192.168.1.101', port=3003, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600,framer=ModbusRtuFramer)
+        register_coil = register.get_coil_by_name('0001')
+
+        # Set motor speed
+        register_speed = register.get_register_by_name('0002')
+        speed_address = register_speed.get_integer_address()
+        speed = int(50)
+        client.connect()
+        client.write_register(speed_address, speed, unit=1)
+        client.close()
+
+        # Set motor direction
+        coil_direction = register.get_coil_by_name('0002')
+        speed_address = coil_direction.get_integer_address()
+        speed = int(0)
+        client.connect()
+        client.write_coil(speed_address, speed, unit=1)
+        client.close()
+
+        # Turn on motor
+        on_switch = register_coil.get_integer_address()
+        integer_value = int('1')
+        client.connect()
+        client.write_coil(on_switch, integer_value, unit=1)
+        client.close()
+
+    def rotate_horizontal_right(self):
+        # Service for getting commands and modbus for sending commands
+        registerService = RegisterMapping(3003, 1)
+        client = ModbusClient(host='192.168.1.101', port=3003, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600,framer=ModbusRtuFramer)
+        register_coil = registerService.get_coil_by_name('0001')
+
+        # Set motor speed
+        register_speed = registerService.get_register_by_name('0002')
+        speed_address = register_speed.get_integer_address()
+        speed = int(50)
+        client.connect()
+        client.write_register(speed_address, speed, unit=1)
+        client.close()
+
+        # Set motor direction
+        coil_direction = registerService.get_coil_by_name('0002')
+        speed_address = coil_direction.get_integer_address()
+        speed = int(1)
+        client.connect()
+        client.write_coil(speed_address, speed, unit=1)
+        client.close()
+
+        # Turn on motor
+        on_switch = register_coil.get_integer_address()
+        integer_value = int('1')
+        client.connect()
+        client.write_coil(on_switch, integer_value, unit=1)
+        client.close()
+
+    def rotate_vertical_up(self):
+        # Service for getting commands and modbus for sending commands
+        registerService = RegisterMapping(3004, 1)
+        client = ModbusClient(host='192.168.1.101', port=3004, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600, framer=ModbusRtuFramer)
+        register_coil = registerService.get_coil_by_name('0001')
+
+        # Set motor speed
+        register_speed = registerService.get_register_by_name('0002')
+        speed_address = register_speed.get_integer_address()
+        speed = int(50)
+        client.connect()
+        client.write_register(speed_address, speed, unit=1)
+        client.close()
+
+        # Set motor direction
+        coil_direction = registerService.get_coil_by_name('0002')
+        speed_address = coil_direction.get_integer_address()
+        speed = int(0)
+        client.connect()
+        client.write_coil(speed_address, speed, unit=1)
+        client.close()
+
+        # Turn on motor
+        on_switch = register_coil.get_integer_address()
+        integer_value = int('1')
+        client.connect()
+        client.write_coil(on_switch, integer_value, unit=1)
+        client.close()
+
+    def rotate_vertical_down(self):
+        # Service for getting commands and modbus for sending commands
+        registerService = RegisterMapping(3004, 1)
+        client = ModbusClient(host='192.168.1.101', port=3004, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600, framer=ModbusRtuFramer)
+        register_coil = registerService.get_coil_by_name('0001')
+
+        # Set motor speed
+        register_speed = registerService.get_register_by_name('0002')
+        speed_address = register_speed.get_integer_address()
+        speed = int(50)
+        client.connect()
+        client.write_register(speed_address, speed, unit=1)
+        client.close()
+
+        # Set motor direction
+        coil_direction = registerService.get_coil_by_name('0002')
+        speed_address = coil_direction.get_integer_address()
+        speed = int(1)
+        client.connect()
+        client.write_coil(speed_address, speed, unit=1)
+        client.close()
+
+        # Turn on motor
+        on_switch = register_coil.get_integer_address()
+        integer_value = int('1')
+        client.connect()
+        client.write_coil(on_switch, integer_value, unit=1)
+        client.close()
+
+    def rotate_horizontal_stop(self):
+        register = RegisterMapping(3003, 1)
+        client = ModbusClient(host='192.168.1.101', port=3003, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600, framer=ModbusRtuFramer)
+
+        # Set motor OFF
+        coil_stop = register.get_coil_by_name('0001')
+        stop_address = coil_stop.get_integer_address()
+        integer_value = int('0')
+
+        client.connect()
+        client.write_coil(stop_address, integer_value, unit=1)
+        client.close()
+
+    def rotate_vertical_stop(self):
+        register = RegisterMapping(3004, 1)
+        client = ModbusClient(host='192.168.1.101', port=3004, timeout=1, stopbits=1, bytesize=8, parity='N', baudrate=9600,framer=ModbusRtuFramer)
+
+        # Set motor OFF
+        coil_stop = register.get_coil_by_name('0001')
+        stop_address = coil_stop.get_integer_address()
+        integer_value = int('0')
+
+        client.connect()
+        client.write_coil(stop_address, integer_value, unit=1)
+        client.close()
 
 if __name__ == '__main__':
     rotation_service = RotationService('UNKNOW PORT', 1)

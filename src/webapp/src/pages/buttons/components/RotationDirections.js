@@ -13,40 +13,56 @@ export default class RotationDirections extends Component {
 
   async handleRequest(rotateOn, rotateId) {
     console.log(rotateOn, rotateId);
-    fetch('http://localhost:5000/', {
+    fetch('http://localhost:5000/buttonrotate', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({action: rotateOn, motor: rotateId})
+      body: JSON.stringify([rotateOn, rotateId])
     });
   }
 
   handleRotation(rotateOn, rotateId) {
+    let allowRotate = false;
     switch(rotateId) {
         case 0:
+          if(!(this.state.horizontalRight || this.state.verticalUp || this.state.verticalDown)){
+            allowRotate = true;
             this.setState({
-                horizontalLeft: !rotateOn,
-                });
-            break;
+              horizontalLeft: !rotateOn,
+            });
+          }
+          break;
         case 1:
+          if(!(this.state.horizontalLeft || this.state.verticalDown || this.state.verticalUp)){
+            allowRotate = true;
             this.setState({
-                horizontalRight: !rotateOn,
-                });
-            break;
+              horizontalRight: !rotateOn,
+            });
+          }
+          break;
         case 2:
+          if(!(this.state.verticalDown || this.state.horizontalRight || this.state.horizontalLeft)){
+            allowRotate = true;
             this.setState({
-                verticalUp: !rotateOn,
-                });
-            break;
+              verticalUp: !rotateOn,
+            });
+          }
+          break;
         case 3:
+          if(!(this.state.verticalUp || this.state.horizontalRight || this.state.horizontalLeft)){
+            allowRotate = true;
             this.setState({
-                verticalDown: !rotateOn,
-                });
-            break;
+              verticalDown: !rotateOn,
+            });
+          }
+          break;
+
     }
-    this.handleRequest(!rotateOn, rotateId);
+    if(allowRotate){
+      this.handleRequest(!rotateOn, rotateId);
+    }
   }
   
 

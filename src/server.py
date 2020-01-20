@@ -107,3 +107,21 @@ def manual_rotate():
 
     response = horizontal_rotate_service.append_to_command_queue(commands, True)
     return json.dumps(response)
+
+@app.rout("/buttonrotate", methods=['POST'])
+def button_rotate():
+    if(response[0]):
+        if(response[1] == 0):
+            RotationService.rotate_horizontal_left()
+        if(response[1] == 1):
+            RotationService.rotate_horizontal_right()
+        if(response[1] == 2):
+            RotationService.rotate_vertical_up()
+        if(response[1] == 3):
+            RotationService.rotate_vertical_down()
+    else:
+        if(response[1] == 0 or response[1] == 1):
+            RotationService.rotate_horizontal_stop()
+        if(response[1] == 2 or response[1] == 3):
+            RotationService.rotate_vertical_stop()
+    return json.dumps(response)
