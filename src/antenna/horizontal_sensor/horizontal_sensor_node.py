@@ -31,6 +31,7 @@ class SensorService:
 
 
         print('Open USB Device')
+
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.close()
         s.connect((TCP_IP, TCP_PORT))
@@ -80,6 +81,7 @@ class SensorService:
                 horizontal_sensor_publisher.publish(data)
                 print('Posistion: ' + data)
                 sleep(1)
+
         print('SENSORS RUNNING')
 
 

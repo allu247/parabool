@@ -109,3 +109,23 @@ def manual_rotate():
     horizontal_publisher = rospy.Publisher('/horizontal_motor_commands', String, queue_size=10)
     horizontal_publisher.publish(json.dumps(response))
     return json.dumps(response)
+
+@app.route("/buttonrotate", methods=['POST'])
+def button_rotate():
+    response = request.json
+    if(response[0]):
+        if(response[1] == 0):
+            return horizontal_rotate_service.rotate_horizontal_left()
+
+        if(response[1] == 1):
+            return horizontal_rotate_service.rotate_horizontal_right()
+        if(response[1] == 2):
+            return horizontal_rotate_service.rotate_vertical_up()
+        if(response[1] == 3):
+           return horizontal_rotate_service.rotate_vertical_down()
+    else:
+        if(response[1] == 0 or response[1] == 1):
+            return horizontal_rotate_service.rotate_horizontal_stop()
+        if(response[1] == 2 or response[1] == 3):
+            return horizontal_rotate_service.rotate_vertical_stop()
+    return json.dumps(response)
